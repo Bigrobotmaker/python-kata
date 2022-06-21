@@ -22,34 +22,23 @@ def median_f(x):
     else:
         median = x[int(len(x)/2)]
     return median
+
 def mode_f(x):
-    mode = 0.0
-    one = 0.0
-    two = 0.0
-    three = 0.0
-    four = 0.0
-    five = 0.0
+    mode = 0
+    d = {}
     for y in x:
-        if y == 1:
-            one = one + 1
-        if y == 2:
-            two = two + 1
-        if y == 3:
-            three = three +1
-        if y == 4:
-            four = four + 1
-        if y == 5:
-            five = five + 1
-    if mode < one:
-        mode = 1
-    if mode < two:
-        mode = 2
-    if mode < three:
-        mode = 3
-    if mode < four:
-        mode = 4
-    if mode < five:
-        mode = 5
+        d[y] = 0
+    
+    for y in x:
+        d[y] = (d[y] + 1)
+
+    largestv = 0
+    for k, v in d.items():    
+        print(k, v)
+        if v > largestv:
+            mode = k
+            largestv = v
+        
     return mode
     
 def range_f(x):
@@ -57,6 +46,9 @@ def range_f(x):
     x = sorted(x)
     ran =(x[len(x)-1] - x[0])
     return ran
+def sum_f(x):
+    # write some code to add up numbers in a list
+    return 0.0
 
 def test_mean():
     assert mean_f(A) == 2.6875
@@ -73,4 +65,8 @@ def test_mode():
 def test_range():
     assert range_f(A) == 4
     assert range_f(B) == 0.5
+def test_sum():
+    assert sum_f(A) == 21.5
+    assert sum_f(C) == 23
+    
     
